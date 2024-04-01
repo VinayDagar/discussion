@@ -5,6 +5,7 @@ import { NextFunction, Response } from "express";
 import { ValidationError } from "sequelize";
 const authRoutes = require('./app/routes/auth')
 const userRoutes = require('./app/routes/user')
+const postRoutes = require('./app/routes/post')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -18,6 +19,7 @@ app.use((req: RequestInstance, _res: Response, next: NextFunction) => {
 
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/post', postRoutes)
 
 app.use((error: IErrorInstance, req: RequestInstance, res: Response, _next: NextFunction) => {
   console.error('Error:: ', { error });
