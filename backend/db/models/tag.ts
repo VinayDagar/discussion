@@ -1,8 +1,9 @@
 import { Sequelize } from "sequelize/types";
 import {DataTypes} from "sequelize";
+import { ITagModel } from "./types/tag.type";
 
 module.exports = (sequelize: Sequelize, type: typeof DataTypes) => {
-  const Tag = sequelize.define(
+  const Tag = sequelize.define<ITagModel>(
     "Tag",
     {
       _id: {
@@ -13,6 +14,7 @@ module.exports = (sequelize: Sequelize, type: typeof DataTypes) => {
       label: {
         type: type.STRING,
         allowNull: false,
+        unique: true
       },
     },
     {

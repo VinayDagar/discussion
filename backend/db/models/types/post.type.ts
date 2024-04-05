@@ -25,6 +25,7 @@ export interface IPostInstance {
   status: PostStatusEnum;
   attachments?: string[];
   replyCount?: number;
+  tags: string[];
 }
 
 export interface IPostModel
@@ -40,5 +41,6 @@ export interface IPostModel
   status: PostStatusEnum;
   attachments?: string[];
   replyCount?: number;
+  tags?: string[];
   isSolution?: boolean;
 }

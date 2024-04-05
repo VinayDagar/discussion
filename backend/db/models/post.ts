@@ -37,6 +37,10 @@ module.exports = (sequelize: Sequelize, type: typeof DataTypes) => {
       allowNull: false,
       defaultValue: 'draft'
     },
+    tags: {
+      type: type.ARRAY(type.STRING),
+      allowNull: false,
+    },
     attachments: {
       type: type.ARRAY(type.STRING),
       allowNull: true,

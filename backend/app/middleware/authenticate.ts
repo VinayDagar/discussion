@@ -47,7 +47,7 @@ module.exports = async (req: RequestInstance, res: Response, next: NextFunction)
       return next(error);
     }
 
-    req.user = omit(user, 'password', 'salt');
+    req.user = omit(user.dataValues, 'password', 'salt');
     next();
 
   } catch (err: unknown) {

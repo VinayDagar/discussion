@@ -15,6 +15,7 @@
     "express": "^4.19.2",
     "hpp": "^0.2.3",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.1",
@@ -29,6 +30,7 @@
     "@types/helmet": "^4.0.0",
     "@types/hpp": "^0.2.6",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/lodash": "^4.17.0",
     "@types/node": "^20.11.30",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2"

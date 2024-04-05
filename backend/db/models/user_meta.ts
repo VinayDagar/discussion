@@ -20,7 +20,7 @@ module.exports = (sequelize: Sequelize, type: typeof DataTypes) => {
         allowNull: false,
       },
       tags: {
-        type: type.ARRAY(type.UUID),
+        type: type.ARRAY(type.STRING),
         allowNull: false,
       },
     },

@@ -1,14 +1,16 @@
-import { ICommentModel } from "db/models/types/comment.type";
+import { NextFunction, Response } from "express";
+import { ModelStatic } from "sequelize";
+
+import { ICommentModel } from "../../db/models/types/comment.type";
 import { JsonView } from "../response-view";
-import { IErrorInstance, RequestInstance } from "const";
+import { IErrorInstance, RequestInstance } from "../../const";
 import {
   IPostInstance,
   IPostModel,
   PostTypeEnum,
-} from "db/models/types/post.type";
-import { NextFunction, Response } from "express";
-import { ModelStatic } from "sequelize";
-import { IReplyModel } from "db/models/types/reply.type";
+} from "../../db/models/types/post.type";
+import { IReplyModel } from "../../db/models/types/reply.type";
+import { ITagModel } from "../../db/models/types/tag.type";
 
 exports.createPostController = async (
   req: RequestInstance,
@@ -16,15 +18,35 @@ exports.createPostController = async (
   next: NextFunction
 ) => {
   try {
-    const { title, body, status, attachments } = req.body;
+    const Post = req.DB.Post as ModelStatic<IPostModel>;
+    const Tag = req.DB.Tag as ModelStatic<ITagModel>;
+    const { title, body, status, attachments, type, tags } =
+      req.body as IPostInstance;
 
-    const post = await req.DB.Post.create({
+    if (!req.user) {
+      const error: IErrorInstance = new Error("UnAuthenticated!");
+      error.statusCode = 401;
+      return next(error);
+    }
+
+    console.log(req.user, "UUUUU");
+
+    const post = await Post.create({
       title,
       body,
       status,
+      type,
       attachments,
-      userId: req.user._id,
+      userId: req.user._id as string,
+      tags,
     });
+
+    Tag.bulkCreate(
+      tags.map((tag) => ({ label: tag.trim().toLowerCase() })),
+      {
+        updateOnDuplicate: ["label"],
+      }
+    );
 
     return res.json(JsonView(post, 201));
   } catch (err) {
