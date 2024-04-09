@@ -1,0 +1,14 @@
+.loginWrapper {
+  background: url("../../assets/login-background.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.cardMargin {
+  margin-top: 10%;
+}

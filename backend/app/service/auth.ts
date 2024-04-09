@@ -27,8 +27,6 @@ export const verifyPasswordAndReturn = async (user: IUserInstance, password: str
   try {
 
     const hashedPassword = createHash(user.salt, password);
-
-    console.log(hashedPassword, user.password, password);
     
     if (user.password !== hashedPassword) {
       // const error: IErrorInstance = new Error('Invalid password!')
