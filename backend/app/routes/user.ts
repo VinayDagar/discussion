@@ -2,7 +2,7 @@ const {
   getLoggedInUserController,
   updateMetaController,
   getFeaturedPosts
-} = require("../controller/user");
+} = require("../controller/user.controller");
 const authenticate = require("../middleware/authenticate");
 import { Router } from "express";
 

@@ -6,7 +6,7 @@ const {
   updateReplyController,
   markSolutionReplyController,
   deleteReplyController,
-} = require("../controller/post");
+} = require("../controller/post.controller");
 const authenticate = require("../middleware/authenticate");
 import { Router } from "express";
 

@@ -29,8 +29,6 @@ exports.createPostController = async (
       return next(error);
     }
 
-    console.log(req.user, "UUUUU");
-
     const post = await Post.create({
       title,
       body,

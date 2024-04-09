@@ -57,13 +57,15 @@ exports.getFeaturedPosts = async (
 
     const tags = await Tag.findAll({
       where: {
-        _id: { [Op.any]: meta?.tags },
+        _id: { [Op.in]: meta?.tags },
       },
     });
 
+    const tagLabels = tags.map((tag) => ({ [Op.contains]: [tag.label] }));
+
     const posts = await Post.findAll({
       where: {
-        tags: { [Op.any]: tags.map((tag) => tag.label) },
+        tags: { [Op.or]: tagLabels },
       },
     });
 

@@ -1,4 +1,4 @@
-const { registerController, loginController } = require('../controller/auth')
+const { registerController, loginController } = require('../controller/auth.controller')
 import { Router } from 'express';
 
 const authRoutes = Router();
